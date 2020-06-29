@@ -1,0 +1,26 @@
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+   integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<div id="left">
+  <ul>
+    <i class="fas fa-tint" style="color:#00a1d6;"></i>
+    Wilgotność: {{lastH}}
+</ul>
+</div>
+<div id="right">
+<ul>
+  <i class="fas fa-thermometer-three-quarters" style="color:#f7aa04;"></i>
+    Temperatura: {{lastT}}
+</ul>
+</div>
+
+<label class="switch">
+  <input type="checkbox" id="togBtn">
+  <div class="slider round">
+    <span class="on" (click)="turnOffLight()">ON</span>
+    <span class="off" (click)="turnOnLight()">OFF</span>
+  </div>
+</label>
+
