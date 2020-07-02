@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import * as moment from 'moment';
-import {Plotly} from 'plotly.js';
 import * as firebase from 'firebase';
+import {Chart} from 'chart.js';
 
 
 @Component({
@@ -10,60 +10,121 @@ import * as firebase from 'firebase';
   templateUrl: './plot.component.html',
   styleUrls: ['./plot.component.css']
 })
+
 export class PlotComponent implements OnInit {
+    chartHumidity = [];
+    chartTemperature = [];
 
   constructor(private db: AngularFireDatabase) {
    }
 
   ngOnInit() {
-    const lastElements = 300;
+      this.chartHumi();
+      this.chartTemp();
+    }
+    chartTemp(){
+        const lastElements = 300;
     // tslint:disable-next-line: variable-name
-    firebase.database().ref('timestamped_humi').limitToLast(lastElements).on('value', ts_measures => {
-     
-      let timestamps = [];
-      let values = [];
+        firebase.database().ref('timestamped_temp').limitToLast(lastElements).on('value', ts_measures => {
+      let timestampsTemp = [];
+      let valuesTemp = [];
       ts_measures.forEach(ts_measure => {
-          //console.log(ts_measure.val().timestamp, ts_measure.val().value);
-          timestamps.push(moment(ts_measure.val().timestamp).format('YYYY-MM-DD HH:mm:ss'));
-          values.push(ts_measure.val().value);
+          timestampsTemp.push(moment(ts_measure.val().timestamp).format('YYYY-MM-DD HH:mm:ss'));
+          valuesTemp.push(ts_measure.val().value);
       });
-     // const myPlotDiv = document.getElementById('myPlot');
 
-      const data = [{
-          x: timestamps,
-          y: values
-      }];
-  
-      const layout = {
-          title: '<b>Humidity live plot</b>',
-          titlefont: {
-              family: 'Courier New, monospace',
-              size: 16,
-              color: '#000'
+      this.chartTemperature = new Chart('canvas1', {
+        type: 'line',
+        data: {
+          labels: timestampsTemp,
+          datasets: [
+            {
+              data: valuesTemp,
+              backgroundColor: 'rgba(0,0,0,1)',
+              borderColor: 'rgba(255, 31, 31, 1)',
+              fill: false
+            }
+          ]
+        },
+        options: {
+          legend: {
+            display: false
           },
-          xaxis: {
-              linecolor: 'black',
-              linewidth: 2
-          },
-          yaxis: {
-              title: '<b>10-bit value</b>',
-              titlefont: {
-                  family: 'Courier New, monospace',
-                  size: 14,
-                  color: '#000'
+          scales: {
+            xAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Czas'
               },
-              linecolor: 'black',
-              linewidth: 2,
-          },
-          margin: {
-              r: 50,
-              pad: 0
+            }],
+            yAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Temperatura [*C]'
+              },
+            }],
           }
-      }
-
-     // Plotly.newPlot(myPlotDiv, data, layout, { responsive: true });
-  });
+        }
+      });
+    },
+    error => {
+      console.log(error);
+    });
   }
+
+  chartHumi(){
+    const lastElements = 300;
+// tslint:disable-next-line: variable-name
+    firebase.database().ref('timestamped_humi').limitToLast(lastElements).on('value', ts_measures => {
+  let timestampsHumi = [];
+  let valuesHumi = [];
+  ts_measures.forEach(ts_measure => {
+      timestampsHumi.push(moment(ts_measure.val().timestamp).format('YYYY-MM-DD HH:mm:ss'));
+      valuesHumi.push(ts_measure.val().value);
+  });
+
+  this.chartHumidity = new Chart('canvas', {
+    type: 'line',
+    data: {
+      labels: timestampsHumi,
+      datasets: [
+        {
+          data: valuesHumi,
+          backgroundColor: 'rgba(0,0,0,1)',
+          borderColor: 'rgba(51, 186, 255 )',
+          fill: false
+        }
+      ]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Czas'
+          },
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Wilgotność [%]'
+          },
+        }],
+      }
+    }
+  });
+},
+error => {
+  console.log(error);
+});
+}
 
 }
 

@@ -1,1 +1,8 @@
-<div id="myPlot" style="width: 100vw; max-height:75vh"></div>
+<div class ="row">
+  <div class="col-6" *ngIf="chartTemperature">
+    <canvas id="canvas1">{{ chartTemperature }}</canvas>
+  </div>
+  <div class="col-6" *ngIf="chartHumidity">
+  <canvas id="canvas">{{ chartHumidity }}</canvas>
+</div>
+</div>
