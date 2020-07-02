@@ -12,10 +12,12 @@ constructor(private db: AngularFireDatabase) { }
 
 turnOn() {
  this.db.object('/').update({LIGHT_STATUS: 'ON'});
+ console.log('light turned ON');
 }
 
 turnOff() {
   this.db.object('/').update({LIGHT_STATUS: 'OFF'});
+  console.log('light turned OFF');
 }
 
 }

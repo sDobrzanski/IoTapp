@@ -24,3 +24,21 @@
   </div>
 </label>
 
+<p>WORK IN PROGRESS -></p>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Wpisz godzinę włączenia światła</span>
+  </div>
+  <input type="datetime-local" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  <span class="input-group-text" id="inputGroup-sizing-default">Wpisz godzinę wyłączenia światła</span>
+  <input type="datetime-local" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  </div>
+
+<p>{{today}}</p> 
+<p>{{today | date:'dd-MM-yyyy hh:mm:ss a':'+2'}} aktualny czas, wyżej jako 'number'</p> 
+
+<form  class="form-inline my-2 my-lg-0" >        
+  <input class="form-control mr-sm-2" type="number" name="timeToWake" placeholder="timeToWake" required [(ngModel)]="timeToWake">
+  <input class="form-control mr-sm-2" type="password" name="timeToSleep" placeholder="timeToSleep" required [(ngModel)]="timeToSleep">
+  <button class="btn btn-success my-2 my-sm-0" type="submit">OK</button>
+</form>

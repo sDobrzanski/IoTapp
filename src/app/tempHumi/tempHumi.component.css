@@ -11,9 +11,12 @@
       display: inline-block;
       width: 90px;
       height: 34px;
+      
     }
     
-    .switch input {display:none;}
+    .switch input {
+      display:none;
+    }
     
     .slider {
       position: absolute;
