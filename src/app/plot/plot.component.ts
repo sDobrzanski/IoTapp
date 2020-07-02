@@ -18,7 +18,7 @@ export class PlotComponent implements OnInit {
   ngOnInit() {
     const lastElements = 300;
     // tslint:disable-next-line: variable-name
-    firebase.database().ref('timestamped_humidity').limitToLast(lastElements).on('value', ts_measures => {
+    firebase.database().ref('timestamped_humi').limitToLast(lastElements).on('value', ts_measures => {
      
       let timestamps = [];
       let values = [];
@@ -27,7 +27,7 @@ export class PlotComponent implements OnInit {
           timestamps.push(moment(ts_measure.val().timestamp).format('YYYY-MM-DD HH:mm:ss'));
           values.push(ts_measure.val().value);
       });
-      const myPlotDiv = document.getElementById('myPlot');
+     // const myPlotDiv = document.getElementById('myPlot');
 
       const data = [{
           x: timestamps,
@@ -61,7 +61,7 @@ export class PlotComponent implements OnInit {
           }
       }
 
-      Plotly.newPlot(myPlotDiv, data, layout, { responsive: true });
+     // Plotly.newPlot(myPlotDiv, data, layout, { responsive: true });
   });
   }
 
