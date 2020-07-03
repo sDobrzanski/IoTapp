@@ -26,7 +26,8 @@
               "@firebase/remote-config",
               "firebase/app",
               "@firebase/util",
-              "@firebase/component"
+              "@firebase/component",
+              "chart.js"
            ],
             "outputPath": "dist/IoT-APP",
             "index": "src/index.html",

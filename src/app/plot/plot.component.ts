@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
 import * as moment from 'moment';
 import * as firebase from 'firebase';
 import {Chart} from 'chart.js';
@@ -15,7 +14,7 @@ export class PlotComponent implements OnInit {
     chartHumidity = [];
     chartTemperature = [];
 
-  constructor(private db: AngularFireDatabase) {
+  constructor() {
    }
 
   ngOnInit() {

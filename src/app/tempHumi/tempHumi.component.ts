@@ -14,13 +14,17 @@ export class TempHumiComponent implements OnInit {
 
   humi: any[];   // humidity
   temp: any[];   // temperature
+  intensity: any[];
+  lastI: any;
   lastH: any;
   lastT: any;
+  alertG: boolean;
   today = Date.now();
   timeToWake: number;
   timeToSleep: number;
 
-  constructor(db: AngularFireDatabase, private lightControl: LightControlService, private timeControlLight: WakeMeUpService) {
+  constructor(private db: AngularFireDatabase, private lightControl: LightControlService,
+              private timeControlLight: WakeMeUpService) {
     db.list('/DHT22/Humidity').valueChanges().subscribe(humi => {
       this.humi = humi;
       console.log(this.humi[this.humi.length - 1]);
@@ -35,6 +39,7 @@ export class TempHumiComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.gasAlert();
   }
 
 
@@ -52,4 +57,21 @@ export class TempHumiComponent implements OnInit {
     this.timeControlLight.goToSleep(this.timeToSleep);
   }
 
+  gasAlert() {
+    this.db.list('/MQ2/Gas').valueChanges().subscribe(intensity => {
+      this.intensity = intensity;
+      console.log(this.intensity[this.intensity.length - 1]);
+      this.lastI = this.intensity[this.intensity.length - 1];
+      if (this.lastI >= 600)
+      {
+      this.alertG = true;
+      // console.log(this.alertG);
+      }
+      else {
+      this.alertG = false;
+      // console.log(this.alertG);
+           }
+        });
+
+      }
 }

@@ -6,13 +6,13 @@
 <div id="left">
   <ul>
     <i class="fas fa-tint" style="color:#00a1d6;"></i>
-    Wilgotność: {{lastH}}
+    Wilgotność: {{lastH}} %
 </ul>
 </div>
 <div id="right">
 <ul>
   <i class="fas fa-thermometer-three-quarters" style="color:#f7aa04;"></i>
-    Temperatura: {{lastT}}
+    Temperatura: {{lastT}} <span>&#8451;</span>
 </ul>
 </div>
 
@@ -23,6 +23,11 @@
     <span class="off" (click)="turnOnLight()">OFF</span>
   </div>
 </label>
+<div *ngIf = "alertG">
+  <div class="alert alert-danger">
+    <strong>Uwaga!</strong> Wykryto gaz.
+  </div>
+</div>
 
 <p>WORK IN PROGRESS -></p>
 <div class="input-group mb-3">
