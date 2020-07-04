@@ -4,6 +4,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
 import * as moment from 'moment';
 import {FormsModule} from '@angular/forms';
+import { NgxGaugeModule } from 'ngx-gauge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +28,8 @@ import { PlotComponent } from './plot/plot.component';
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFireDatabaseModule,
       BrowserAnimationsModule,
-      FormsModule
+      FormsModule,
+      NgxGaugeModule
    ],
    providers: [],
    bootstrap: [

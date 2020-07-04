@@ -1,21 +1,31 @@
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-   integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-</head>
-
-<div id="left">
-  <ul>
-    <i class="fas fa-tint" style="color:#00a1d6;"></i>
-    Wilgotność: {{lastH}} %
-</ul>
+<div class = "row">
+  <div class="col-3"></div>
+  <div class="col-sm-4">
+<ngx-gauge [type]="gaugeType1" 
+           [thick] = "7"
+           [value]="lastT" 
+           [min] = '-10'
+           [max] = '50'
+           [thresholds] = 'thresholdConfig'
+           [foregroundColor] = "color1"
+           [label]="gaugeLabel1"  
+           [append]="gaugeAppendText1">
+</ngx-gauge>
 </div>
-<div id="right">
-<ul>
-  <i class="fas fa-thermometer-three-quarters" style="color:#f7aa04;"></i>
-    Temperatura: {{lastT}} <span>&#8451;</span>
-</ul>
+<div class="col-sm-4">
+<ngx-gauge [type]="gaugeType2" 
+           [thick] = '7'
+           [value]="lastH" 
+           [label]="gaugeLabel2"  
+           [foregroundColor] = "color2"
+           [append]="gaugeAppendText2">
+</ngx-gauge>
 </div>
-
+</div>
+<div class = "row">
+  <div class="col-3"></div>
+  <div class="col-2"></div>
+  <div class = "col-md-4">
 <label class="switch">
   <input type="checkbox" id="togBtn">
   <div class="slider round">
@@ -23,6 +33,8 @@
     <span class="off" (click)="turnOnLight()">OFF</span>
   </div>
 </label>
+</div>
+</div>
 <div *ngIf = "alertG">
   <div class="alert alert-danger">
     <strong>Uwaga!</strong> Wykryto gaz.

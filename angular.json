@@ -27,7 +27,8 @@
               "firebase/app",
               "@firebase/util",
               "@firebase/component",
-              "chart.js"
+              "chart.js",
+              "svg-gauge"
            ],
             "outputPath": "dist/IoT-APP",
             "index": "src/index.html",

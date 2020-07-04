@@ -22,7 +22,7 @@ export class PlotComponent implements OnInit {
       this.chartTemp();
     }
     chartTemp(){
-        const lastElements = 300;
+        const lastElements = 50;
     // tslint:disable-next-line: variable-name
         firebase.database().ref('timestamped_temp').limitToLast(lastElements).on('value', ts_measures => {
       let timestampsTemp = [];
@@ -74,7 +74,7 @@ export class PlotComponent implements OnInit {
   }
 
   chartHumi(){
-    const lastElements = 300;
+    const lastElements = 50;
 // tslint:disable-next-line: variable-name
     firebase.database().ref('timestamped_humi').limitToLast(lastElements).on('value', ts_measures => {
   let timestampsHumi = [];
