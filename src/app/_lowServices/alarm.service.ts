@@ -7,26 +7,29 @@ import {AngularFireDatabase} from 'angularfire2/database';
 export class AlarmService {
   intensity: any[];
   lastI: any;
-  alertG: boolean;
 constructor(private db: AngularFireDatabase) { }
 
 // tslint:disable-next-line: typedef
-gasAlert(alertG) {
+gasAlert(alertGd: boolean, alertGs: boolean, alertGi: boolean) {
   this.db.list('/MQ2/Gas').valueChanges().subscribe(intensity => {
     this.intensity = intensity;
     console.log(this.intensity[this.intensity.length - 1]);
     this.lastI = this.intensity[this.intensity.length - 1];
-    if (this.lastI >= 570)
-    {
-    alertG = true;
-    console.log(alertG);
-    return alertG;
-    }
-    else {
-    alertG = false;
-    console.log(alertG);
-    return alertG;
-         }
+    if (this.lastI >= 600)
+      {
+      alertGd = true;
+      alertGs = false;
+      alertGi = false;
+      }
+      else if (this.lastI < 600 && this.lastI >= 580) {
+      alertGd = false;
+      alertGi = true;
+      alertGs = false;
+           } else {
+      alertGd = false;
+      alertGi = false;
+      alertGs = true;
+           }
       });
 
     }

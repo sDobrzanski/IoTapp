@@ -61,7 +61,7 @@ export class PlotComponent implements OnInit {
               display: true,
               scaleLabel: {
                 display: true,
-                labelString: 'Temperatura [*C]'
+                labelString: 'Temperatura [\u00B0C]'
               },
             }],
           }

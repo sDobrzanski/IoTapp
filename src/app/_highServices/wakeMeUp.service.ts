@@ -7,34 +7,24 @@ import * as moment from 'moment';
 })
 export class WakeMeUpService {
 
-   timeNow = Date.now();
-  // currentTime: number = moment.now();
 
 constructor(private lightControl: LightControlService) { }
 
-  wakeUp(timeToWake: number) {
-    if (timeToWake === this.timeNow) {
-      this.lightControl.turnOn();
-    }
-  }
-
-  goToSleep(timeToSleep: number) {
-    if (timeToSleep === this.timeNow) {
-      this.lightControl.turnOff();
-    }
-  }
-
-/*
-    wakeUp(wakeUpTime: moment.Moment = moment()) {
-      if (wakeUpTime.isBetween(this.currentTime, this.currentTime)) {
+    // tslint:disable-next-line: typedef
+    wakeUp(currentTime = moment().format('YYYY-MM-DDTHH:mm'), wakeUpTime= moment().format()) {
+      // console.log(currentTime);
+      // console.log(wakeUpTime);
+       if (wakeUpTime === currentTime) {
         this.lightControl.turnOn();
       }
     }
 
-    goToSleep(sleepTime: moment.Moment = moment()) {
-      if (sleepTime.isBetween(this.currentTime, this.currentTime)) {
+    // tslint:disable-next-line: typedef
+    goToSleep(currentTime = moment().format('YYYY-MM-DDTHH:mm'), sleepTime = moment().format()) {
+     // console.log(currentTime);
+     // console.log(sleepTime);
+      if (sleepTime === currentTime) {
         this.lightControl.turnOff();
       }
     }
-*/
 }

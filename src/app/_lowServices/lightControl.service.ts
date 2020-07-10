@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,17 @@ lightStatus: string;
 
 constructor(private db: AngularFireDatabase) { }
 
+// tslint:disable-next-line: typedef
 turnOn() {
- this.db.object('/').update({LIGHT_STATUS: 'ON'});
- console.log('light turned ON');
+  this.lightStatus = 'ON';
+  this.db.object('/').update({LIGHT_STATUS: this.lightStatus});
+  console.log('light turned ON');
 }
 
+// tslint:disable-next-line: typedef
 turnOff() {
-  this.db.object('/').update({LIGHT_STATUS: 'OFF'});
+  this.lightStatus = 'OFF';
+  this.db.object('/').update({LIGHT_STATUS: this.lightStatus});
   console.log('light turned OFF');
 }
 
