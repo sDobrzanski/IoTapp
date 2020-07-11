@@ -26,7 +26,7 @@ export class TempHumiComponent implements OnInit {
   timeToWake: any;
   timeToSleep: any;
   currentTime: any;
-  sub: Subscription ;
+  interval: Subscription ;
 
     gaugeType1 = 'arch';
     gaugeLabel1 = 'Temperatura';
@@ -43,6 +43,10 @@ export class TempHumiComponent implements OnInit {
       '30': {color: 'red'},
       '50': {color: 'red'},
   };
+  lightOn: any;
+  lastlightOn: any;
+  lightOff: any;
+  lastlightOff: any;
 
   constructor(private db: AngularFireDatabase, private lightControl: LightControlService,
               private timeControlLight: WakeMeUpService, private alarmService: AlarmService) {
@@ -50,10 +54,12 @@ export class TempHumiComponent implements OnInit {
     this.getTemp();
     this.getHumi();
 
-    this.sub = interval(60000)
+    this.interval = interval(60000)
     .subscribe((val) => {
       this.wakeUp();
       this.goToSleep();
+      this.pushLastLightOn();
+      this.pushLastLightOff();
       }
     );
 
@@ -61,6 +67,8 @@ export class TempHumiComponent implements OnInit {
 
   ngOnInit() {
     this.gasAlert();
+    this.getLastLightOn();
+    this.getLastLightOff();
   // this.alarmService.gasAlert(this.alertGd, this.alertGs, this.alertGi);
   }
   getTemp() {
@@ -76,6 +84,33 @@ export class TempHumiComponent implements OnInit {
       this.humi = humi;
       console.log(this.humi[this.humi.length - 1]);
       this.lastH = this.humi[this.humi.length - 1];
+    });
+  }
+
+  pushLastLightOn() {
+    this.db.list('/timeLightON').push(this.timeToWake);
+    this.timeToWake = this.lastlightOn;
+  }
+
+  pushLastLightOff() {
+    this.db.list('/timeLightOFF').push(this.timeToSleep);
+  }
+
+  getLastLightOn() {
+    this.db.list('/timeLightON').valueChanges().subscribe(lightOn => {
+      this.lightOn = lightOn;
+      this.lastlightOn = this.lightOn[this.lightOn.length - 1];
+
+      this.timeToWake = this.lastlightOn;
+    });
+  }
+
+  getLastLightOff() {
+    this.db.list('/timeLightOFF').valueChanges().subscribe(lightOff => {
+      this.lightOff = lightOff;
+      this.lastlightOff = this.lightOff[this.lightOff.length - 1];
+
+      this.timeToSleep = this.lastlightOff;
     });
   }
 
