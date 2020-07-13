@@ -6,19 +6,13 @@ import {AlarmService} from 'src/app/_lowServices/alarm.service';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-  // tslint:disable-next-line: component-selector
-  selector: 'app-tempHumi',
-  templateUrl: './tempHumi.component.html',
-  styleUrls: ['./tempHumi.component.css']
+  selector: 'app-light',
+  templateUrl: './light.component.html',
+  styleUrls: ['./light.component.css']
 })
-export class TempHumiComponent implements OnInit {
-
-  humi: any[];   // humidity
-  temp: any[];   // temperature
+export class LightComponent implements OnInit {
   intensity: any[];
   lastI: any;
-  lastH: any;
-  lastT: any;
   alertGs: boolean;
   alertGd: boolean;
   alertGi: boolean;
@@ -26,35 +20,16 @@ export class TempHumiComponent implements OnInit {
   timeToSleep: any;
   currentTime: any;
   interval: Subscription ;
-
-    gaugeType1 = 'arch';
-    gaugeLabel1 = 'Temperatura';
-    gaugeAppendText1 = '\u00B0C';
-    color1 = 'rgb(255, 94, 0)';
-    color2 = 'rgb(47, 227, 255)';
-    gaugeType2 = 'full';
-    gaugeLabel2 = 'Wilgotność';
-    gaugeAppendText2 = '%';
-    thresholdConfig = {
-      '-10': {color: '#80ffff'},
-      '0': {color: 'rgb(47, 227, 255)'},
-      '10': {color: 'orange'},
-      '30': {color: 'red'},
-      '50': {color: 'red'},
-  };
   tsLightOn: any;
   tsLastlightOn: any;
   tsLightOff: any;
   tsLastlightOff: any;
-
+  lightbulb: boolean;
+  lightbul2: boolean;
   constructor(private db: AngularFireDatabase, private lightControl: LightControlService,
-              private timeControlLight: WakeMeUpService, private alarmService: AlarmService) {
-
-    this.getTemp();
-    this.getHumi();
-
-
-    this.interval = interval(1000)
+    private timeControlLight: WakeMeUpService, private alarmService: AlarmService) {
+      
+      this.interval = interval(1000)
     .subscribe((val) => {
       this.wakeUp();
       this.goToSleep();
@@ -62,29 +37,12 @@ export class TempHumiComponent implements OnInit {
       this.pushLastLightOff();
       }
     );
-
-    }
+     }
 
   ngOnInit() {
     this.gasAlert();
     this.getLastLightOn();
     this.getLastLightOff();
-  // this.alarmService.gasAlert(this.alertGd, this.alertGs, this.alertGi);
-  }
-  getTemp() {
-    this.db.list('/DHT22/Temperature').valueChanges().subscribe(temp => {
-      this.temp = temp;
-      console.log(this.temp[this.temp.length - 1]);
-      this.lastT = this.temp[this.temp.length - 1];
-    });
-  }
-
-  getHumi() {
-    this.db.list('/DHT22/Humidity').valueChanges().subscribe(humi => {
-      this.humi = humi;
-      console.log(this.humi[this.humi.length - 1]);
-      this.lastH = this.humi[this.humi.length - 1];
-    });
   }
 
   pushLastLightOn() {
@@ -119,9 +77,11 @@ export class TempHumiComponent implements OnInit {
 
   turnOnLight() {
     this.lightControl.turnOn();
+    this.lightbulb = true;
   }
   turnOffLight() {
     this.lightControl.turnOff();
+    this.lightbulb = false;
   }
 
   wakeUp() {
@@ -153,4 +113,5 @@ export class TempHumiComponent implements OnInit {
         });
 
       }
+
 }

@@ -32,7 +32,7 @@ export class PlotComponent implements OnInit {
           valuesTemp.push(ts_measure.val().value);
       });
 
-      this.chartTemperature = new Chart('canvas1', {
+      this.chartTemperature = new Chart('canvas2', {
         type: 'line',
         data: {
           labels: timestampsTemp,
@@ -84,7 +84,7 @@ export class PlotComponent implements OnInit {
       valuesHumi.push(ts_measure.val().value);
   });
 
-  this.chartHumidity = new Chart('canvas', {
+  this.chartHumidity = new Chart('canvas3', {
     type: 'line',
     data: {
       labels: timestampsHumi,

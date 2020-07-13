@@ -14,13 +14,19 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TempHumiComponent } from './tempHumi/tempHumi.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlotComponent } from './plot/plot.component';
+import { HumidityComponent } from './humidity/humidity.component';
+import { TemperatureComponent } from './temperature/temperature.component';
+import { LightComponent } from './light/light.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       NavbarComponent,
       TempHumiComponent,
-      PlotComponent
+      PlotComponent,
+      HumidityComponent,
+      TemperatureComponent,
+      LightComponent
    ],
    imports: [
       BrowserModule,

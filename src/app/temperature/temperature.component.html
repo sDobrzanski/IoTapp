@@ -1,0 +1,20 @@
+<div class = "row">
+  <div class="col-5"></div>
+<ngx-gauge [type]="gaugeType1" 
+           [thick] = "7"
+           [value]="lastT" 
+           [min] = '-10'
+           [max] = '50'
+           [thresholds] = 'thresholdConfig'
+           [label]="gaugeLabel1"  
+           [append]="gaugeAppendText1">
+</ngx-gauge>
+</div>
+
+<p></p>
+<div class ="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <canvas id="canvas1">{{ chartTemperature }}</canvas>
+  </div>
+</div>
