@@ -1,18 +1,30 @@
-<nav class="navbar navbar-expand">
-  <a class="navbar-brand" ></a>
 
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/tempHumi']" >Strona Główna</a>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/plot']" >Wykresy</a>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/temperature']" >Temperatura</a>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/humidity']" >Wilgotność</a>
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/light']" >Światło</a>    
+<nav class="navbar navbar-expand-md">
 
-  
+  <div class="container ">
+    <ul class="navbar-nav  ml-0"> 
+    <a class="nav-link" [routerLink]="['/tempHumi']" ><i class="fa fa-home fa-2x img" aria-hidden="true"></i>
+      <span class="link-text logo-text"><strong>Strona główna</strong></span></a>
     </ul>
+   
+
+        <ul class="navbar-nav ml-auto mr-0"> 
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/plot']" ><i class="fa fa-line-chart fa-2x img" aria-hidden="true"></i>
+          <span class="link-text">Wykresy</span></a>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/temperature']" ><i class="fa fa-thermometer-three-quarters fa-2x img" aria-hidden="true"></i>
+            <span class="link-text">Temperatura</span></a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/humidity']" ><i class="fa fa-tint fa-2x img" aria-hidden="true"></i>
+          <span class="link-text">Wilgotność</span></a>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/light']" ><i class="fa fa-lightbulb-o fa-2x img" aria-hidden="true"></i>
+              <span class="link-text">Światło</span>
+            </a>
+
+          </ul>
+
+  </div>
+
 </nav>
