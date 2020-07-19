@@ -3,8 +3,8 @@
   <div class="col-3"></div>
   <div class="col-2"></div>
   <div class="col-4">
-<div *ngIf="lightbulb; else elseBlock"><i class="fa fa-lightbulb-o fa-5x yellow" ></i></div>
-<ng-template #elseBlock><i class="fa fa-lightbulb-o fa-5x" ></i></ng-template>
+<div *ngIf="lightbulb; else elseBlock"><i class="fa fa-lightbulb-o fa-5x yellow big" ></i></div>
+<ng-template #elseBlock><i class="fa fa-lightbulb-o fa-5x big" ></i></ng-template>
 </div>
 </div>
 <div class = "row">
@@ -23,16 +23,6 @@
 <div *ngIf = "alertGd">
   <div class="alert alert-danger">
     <strong>Uwaga!</strong> Wykryto krytyczną ilość gazu.
-  </div>
-</div>
-<div *ngIf = "alertGs">
-  <div class="alert alert-success">
-    Nie wykryto gazu.
-  </div>
-</div>
-<div *ngIf = "alertGi">
-  <div class="alert alert-warning">
-    Wykryto znikomą ilość gazu.
   </div>
 </div>
 

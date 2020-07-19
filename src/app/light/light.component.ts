@@ -25,10 +25,9 @@ export class LightComponent implements OnInit {
   tsLightOff: any;
   tsLastlightOff: any;
   lightbulb: boolean;
-  lightbul2: boolean;
   constructor(private db: AngularFireDatabase, private lightControl: LightControlService,
-    private timeControlLight: WakeMeUpService, private alarmService: AlarmService) {
-      
+              private timeControlLight: WakeMeUpService, private alarmService: AlarmService) {
+
       this.interval = interval(1000)
     .subscribe((val) => {
       this.wakeUp();

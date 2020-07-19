@@ -29,7 +29,7 @@
 <label class="switch">
   <input type="checkbox" id="togBtn">
   <div class="slider round">
-    <span class="on" (click)="turnOffLight()">ON</span>
+    <span class="on" (dragover)="turnOffLight()">ON</span>
     <span class="off" (click)="turnOnLight()">OFF</span>
   </div>
 </label>

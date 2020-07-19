@@ -34,12 +34,12 @@
   width: 9rem;
   color: #ffffff;
   text-decoration: none;
-  filter:opacity(0.9);
+  filter:opacity(1);
   transition: 600ms;
 }
 .nav-link.nav-link:hover {
   filter: grayscale(15%) opacity(1);
-  color: #000000b2;
+  color: #eff317;
   transform: scale(1.2,1.2);
   transition-duration: 500ms;
   transition-timing-function: ease-out;
