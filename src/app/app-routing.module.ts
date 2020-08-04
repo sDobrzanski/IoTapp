@@ -8,7 +8,8 @@ import {LightComponent} from './light/light.component'
 
 
 const routes: Routes = [
-  {path: 'tempHumi', component: TempHumiComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: 'home', component: TempHumiComponent},
   {path: 'plot', component: PlotComponent},
   {path: 'humidity', component: HumidityComponent },
   {path: 'temperature', component: TemperatureComponent },

@@ -12,10 +12,10 @@
   <div class="col-2"></div>
   <div class="col-2">
 <label class="switch">
-  <input type="checkbox" id="togBtn">
+  <input type="checkbox" id="togBtn" (click)="toggleLight()">
   <div class="slider round">
-    <span class="on" (click)="turnOffLight()">ON</span>
-    <span class="off" (click)="turnOnLight()">OFF</span>
+    <span class="on">ON</span>
+    <span class="off">OFF</span>
   </div>
 </label>
 </div>
@@ -30,12 +30,12 @@
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     
-    <span class="input-group-text" >Wpisz godzinę włączenia światła</span>
+    <span class="input-group-text" >Ustaw godzinę włączenia światła</span>
   </div>
   <input type="datetime-local" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
    name="timeToWake" required [(ngModel)]="timeToWake">
 
-  <span class="input-group-text" >Wpisz godzinę wyłączenia światła</span>
+  <span class="input-group-text" >Ustaw godzinę wyłączenia światła</span>
   <input type="datetime-local" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
   name="timeToSleep" required [(ngModel)]="timeToSleep">
   </div>

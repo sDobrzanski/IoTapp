@@ -5,6 +5,7 @@ import {AngularFireModule} from 'angularfire2';
 import * as moment from 'moment';
 import {FormsModule} from '@angular/forms';
 import { NgxGaugeModule } from 'ngx-gauge';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +36,8 @@ import { LightComponent } from './light/light.component';
       AngularFireDatabaseModule,
       BrowserAnimationsModule,
       FormsModule,
-      NgxGaugeModule
+      NgxGaugeModule,
+      FlexLayoutModule
    ],
    providers: [],
    bootstrap: [

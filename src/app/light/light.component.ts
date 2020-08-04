@@ -25,6 +25,7 @@ export class LightComponent implements OnInit {
   tsLightOff: any;
   tsLastlightOff: any;
   lightbulb: boolean;
+  lightStatus: boolean;
   constructor(private db: AngularFireDatabase, private lightControl: LightControlService,
               private timeControlLight: WakeMeUpService, private alarmService: AlarmService) {
 
@@ -42,6 +43,14 @@ export class LightComponent implements OnInit {
     this.gasAlert();
     this.getLastLightOn();
     this.getLastLightOff();
+  }
+
+  toggleLight() {
+    if (!this.lightStatus) {
+      this.turnOnLight();
+    } else {
+      this.turnOffLight();
+    }
   }
 
   pushLastLightOn() {
@@ -77,10 +86,12 @@ export class LightComponent implements OnInit {
   turnOnLight() {
     this.lightControl.turnOn();
     this.lightbulb = true;
+    this.lightStatus = true;
   }
   turnOffLight() {
     this.lightControl.turnOff();
     this.lightbulb = false;
+    this.lightStatus = false;
   }
 
   wakeUp() {

@@ -52,17 +52,31 @@ export class PlotComponent implements OnInit {
           scales: {
             xAxes: [{
               display: true,
+              gridLines: { color: 'white' },
               scaleLabel: {
                 display: true,
-                labelString: 'Czas'
+                labelString: 'Czas',
+                fontColor: 'white',
+                fontSize: 13
               },
+              ticks: {
+                fontColor: 'white',
+                fontSize: 13
+               }
             }],
             yAxes: [{
               display: true,
+              gridLines: { color: 'white' },
               scaleLabel: {
                 display: true,
-                labelString: 'Temperatura [\u00B0C]'
+                labelString: 'Temperatura [\u00B0C]',
+                fontColor: 'white',
+                fontSize: 13
               },
+              ticks: {
+                fontColor: 'white',
+                fontSize: 13
+               }
             }],
           }
         }
@@ -104,17 +118,31 @@ export class PlotComponent implements OnInit {
       scales: {
         xAxes: [{
           display: true,
+          gridLines: { color: 'white' },
           scaleLabel: {
             display: true,
-            labelString: 'Czas'
+            labelString: 'Czas',
+            fontColor: 'white',
+            fontSize: 13
           },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 13
+           }
         }],
         yAxes: [{
           display: true,
+          gridLines: { color: 'white' },
           scaleLabel: {
             display: true,
-            labelString: 'Wilgotność [%]'
+            labelString: 'Wilgotność [%]',
+            fontColor: 'white',
+            fontSize: 13
           },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 13
+           }
         }],
       }
     }

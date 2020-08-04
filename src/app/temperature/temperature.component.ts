@@ -18,6 +18,7 @@ export class TemperatureComponent implements OnInit {
     gaugeLabel1 = 'Temperatura';
     gaugeAppendText1 = '\u00B0C';
     color1 = 'rgb(255, 94, 0)';
+    backgroundColor = 'white';
     thresholdConfig = {
       '-10': {color: '#80ffff'},
       '0': {color: 'rgb(47, 227, 255)'},
@@ -72,17 +73,29 @@ export class TemperatureComponent implements OnInit {
       scales: {
         xAxes: [{
           display: true,
+          gridLines: { color: 'white' },
           scaleLabel: {
             display: true,
-            labelString: 'Czas'
+            labelString: 'Czas',
+            fontColor: 'white',
           },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 12
+           }
         }],
         yAxes: [{
           display: true,
+          gridLines: { color: 'white' },
           scaleLabel: {
             display: true,
-            labelString: 'Temperatura [\u00B0C]'
+            labelString: 'Temperatura [\u00B0C]',
+            fontColor: 'white',
           },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 12
+           }
         }],
       }
     }

@@ -15,17 +15,11 @@ export class HumidityComponent implements OnInit {
   lastH: any;
   chartHumidity = [];
 
-    color2 = 'rgb(47, 227, 255)';
+    color2 = 'rgb(10, 23, 204)';
+    backgroundColor = 'white';
     gaugeType2 = 'full';
     gaugeLabel2 = 'Wilgotność';
     gaugeAppendText2 = '%';
-    thresholdConfig = {
-      '-10': {color: '#80ffff'},
-      '0': {color: 'rgb(47, 227, 255)'},
-      '10': {color: 'orange'},
-      '30': {color: 'red'},
-      '50': {color: 'red'},
-  };
 
   constructor(private db: AngularFireDatabase) {
 
@@ -62,8 +56,8 @@ export class HumidityComponent implements OnInit {
       datasets: [
         {
           data: valuesHumi,
-          backgroundColor: 'rgba(0,0,0,1)',
-          borderColor: 'rgba(51, 186, 255 )',
+          backgroundColor: 'rgba(4, 12, 130)',
+          borderColor: 'rgba(88, 165, 242)',
           fill: false
         }
       ]
@@ -75,17 +69,29 @@ export class HumidityComponent implements OnInit {
       scales: {
         xAxes: [{
           display: true,
+          gridLines: { color: 'white' },
           scaleLabel: {
             display: true,
-            labelString: 'Czas'
+            labelString: 'Czas',
+            fontColor: 'white',
           },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 12
+           }
         }],
         yAxes: [{
           display: true,
+          gridLines: { color: 'white' },
           scaleLabel: {
             display: true,
-            labelString: 'Wilgotność [%]'
+            labelString: 'Wilgotność [%]',
+            fontColor: 'white',
           },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 12
+           }
         }],
       }
     }

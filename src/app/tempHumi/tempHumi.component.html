@@ -1,38 +1,26 @@
+<section>
+    <div class="container flex-center">
+      <div class="row flex-center pt-5 mt-3">
+        <div class="col-md-6 text-center text-md-left margins">
+          <div class="text-white">
+            <h1 >Twój smart home w jednym miejscu </h1>
+            <hr>
+            <h6 >Lorem ipsum dolor sit amet, consectetur
+              adipisicing
+              elit. Rem repellendus quasi fuga nesciunt dolorum nulla magnam veniam sapiente, fugiat!
+              Commodi sequi
+              non animi ea dolor molestiae iste.</h6>
+              <button type="button" class="btn btn-outline-light" [routerLink]="'/info'">Więcej</button>
+          </div>
+        </div>
+</div>
+</div>
+</section>
 <div class="container mt-4">
 <div class = "row">
   <div class="col-3"></div>
   <div class="col-sm-4">
-<ngx-gauge [type]="gaugeType1" 
-           [thick] = "7"
-           [value]="lastT" 
-           [min] = '-10'
-           [max] = '50'
-           [thresholds] = 'thresholdConfig'
-           [label]="gaugeLabel1"  
-           [append]="gaugeAppendText1">
-</ngx-gauge>
-</div>
-<div class="col-sm-4">
-<ngx-gauge [type]="gaugeType2" 
-           [thick] = '7'
-           [value]="lastH" 
-           [label]="gaugeLabel2"  
-           [foregroundColor] = "color2"
-           [append]="gaugeAppendText2">
-</ngx-gauge>
-</div>
-</div>
-<div class = "row">
-  <div class="col-3"></div>
-  <div class="col-2"></div>
-  <div class = "col-4">
-<label class="switch">
-  <input type="checkbox" id="togBtn">
-  <div class="slider round">
-    <span class="on" (dragover)="turnOffLight()">ON</span>
-    <span class="off" (click)="turnOnLight()">OFF</span>
-  </div>
-</label>
+
 </div>
 </div>
 <div *ngIf = "alertGd">
@@ -50,17 +38,4 @@
     Wykryto znikomą ilość gazu.
   </div>
 </div>
-
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    
-    <span class="input-group-text" >Wpisz godzinę włączenia światła</span>
-  </div>
-  <input type="datetime-local" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
-   name="timeToWake" required [(ngModel)]="timeToWake">
-
-  <span class="input-group-text" >Wpisz godzinę wyłączenia światła</span>
-  <input type="datetime-local" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
-  name="timeToSleep" required [(ngModel)]="timeToSleep">
-  </div>
 </div>
