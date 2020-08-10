@@ -1,20 +1,47 @@
-<div class="container">
-<div class = "row">
-  <div class="col-5"></div>
-<ngx-gauge class = "white" [type]="gaugeType2" 
-           [thick] = '7'
-           [value]="lastH" 
-           [label]="gaugeLabel2"  
-           [foregroundColor] = "color2"
-           [backgroundColor] = "backgroundColor"
-           [append]="gaugeAppendText2">
-</ngx-gauge>
-</div>
-<p></p>
-<div class ="row">
-  <div class="col-3"></div>
-  <div class="col-6">
-  <canvas id="canvas">{{ chartHumidity }}</canvas>
-  </div>  
-</div> 
-</div>
+<div class="center margin">
+  <div class="col-12 col-xl-6">
+            <div class="card backgroundColor">
+              <div class="card-header">
+
+                <h4 class="card-header-title white ">
+                  Wykres wilgotności
+                </h4>
+
+              </div>
+              <div class="card-body">
+
+                <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                  <canvas id="canvas" class="chart-canvas chartjs-render-monitor" style="display: block; height: 300px; width: 646px;" width="807" height="375">{{ chartHumidity }}</canvas>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-4">
+
+            <!-- Traffic -->
+            <div class="card backgroundColor">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title white ">
+                  Pomiar wilgotności
+                </h4>
+
+
+              </div>
+              <div class="card-body">
+                <div class = "center">
+                  <ngx-gauge class = "white" [type]="gaugeType2" 
+                  [thick] = '7'
+                  [value]="lastH" 
+                  [label]="gaugeLabel2"  
+                  [foregroundColor] = "color2"
+                  [backgroundColor] = "backgroundColor"
+                  [append]="gaugeAppendText2">
+       </ngx-gauge>
+    </div>
+              </div>
+            </div>
+          </div>
+        </div>

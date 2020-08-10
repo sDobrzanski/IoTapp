@@ -1,23 +1,49 @@
-<div class="container" >
-<div class = "row">
-  <div class="col-5"></div>
-<ngx-gauge class = "white" [type]="gaugeType1" 
-           [thick] = "7"
-           [value]="lastT" 
-           [min] = '-10'
-           [max] = '50'
-           [backgroundColor] = "backgroundColor"
-           [thresholds] = 'thresholdConfig'
-           [label]="gaugeLabel1"  
-           [append]="gaugeAppendText1">
-</ngx-gauge>
-</div>
+<div class="center margin">
+  <div class="col-12 col-xl-6">
+            <div class="card backgroundColor">
+              <div class="card-header">
 
-<p></p>
-<div class ="row">
-  <div class="col-3"></div>
-  <div class="col-6">
-    <canvas id="canvas1">{{ chartTemperature }}</canvas>
-  </div>
-</div>
-</div>
+                <h4 class="card-header-title white">
+                  Wykres temperatury
+                </h4>
+
+              </div>
+              <div class="card-body">
+
+                <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                  <canvas id="canvas1" class="chart-canvas chartjs-render-monitor" style="display: block; height: 300px; width: 646px;" width="807" height="375">{{ chartTemperature }}</canvas>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-4">
+
+            <!-- Traffic -->
+            <div class="card backgroundColor">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title white">
+                  Pomiar temperatury
+                </h4>
+
+
+              </div>
+              <div class="card-body">
+                <div class = "center">
+                <ngx-gauge class = "white" [type]="gaugeType1" 
+                [thick] = "7"
+                [value]="lastT" 
+                [min] = '-10'
+                [max] = '50'
+                [backgroundColor] = "backgroundColor"
+                [thresholds] = 'thresholdConfig'
+                [label]="gaugeLabel1"  
+                [append]="gaugeAppendText1">
+     </ngx-gauge>
+    </div>
+              </div>
+            </div>
+          </div>
+        </div>

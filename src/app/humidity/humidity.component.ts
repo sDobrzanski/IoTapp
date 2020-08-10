@@ -56,9 +56,9 @@ export class HumidityComponent implements OnInit {
       datasets: [
         {
           data: valuesHumi,
-          backgroundColor: 'rgba(4, 12, 130)',
+          backgroundColor: 'rgba(4, 12, 130, 0.57)',
           borderColor: 'rgba(88, 165, 242)',
-          fill: false
+          fill: true
         }
       ]
     },

@@ -12,7 +12,7 @@ constructor(private lightControl: LightControlService) { }
 
     // tslint:disable-next-line: typedef
     wakeUp(currentTime = moment().format('YYYY-MM-DDTHH:mm:ss'), wakeUpTime: any) {
-       // console.log(currentTime);
+        console.log(currentTime);
       //  console.log(wakeUpTime);
        if (wakeUpTime === currentTime) {
         this.lightControl.turnOn();

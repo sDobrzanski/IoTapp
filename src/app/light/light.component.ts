@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {LightControlService} from 'src/app/_lowServices/lightControl.service';
 import {WakeMeUpService} from 'src/app/_highServices/wakeMeUp.service';
-import {AlarmService} from 'src/app/_lowServices/alarm.service';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
@@ -24,15 +23,16 @@ export class LightComponent implements OnInit {
   tsLastlightOn: any;
   tsLightOff: any;
   tsLastlightOff: any;
-  lightbulb: boolean;
   lightStatus: boolean;
+  light: boolean;
+  lightStatusString: any;
   constructor(private db: AngularFireDatabase, private lightControl: LightControlService,
-              private timeControlLight: WakeMeUpService, private alarmService: AlarmService) {
-
+              private timeControlLight: WakeMeUpService) {
       this.interval = interval(1000)
     .subscribe((val) => {
-      this.wakeUp();
-      this.goToSleep();
+      this.getLightStatus();
+     // this.wakeUp();
+    //  this.goToSleep();
       this.pushLastLightOn();
       this.pushLastLightOff();
       }
@@ -45,8 +45,19 @@ export class LightComponent implements OnInit {
     this.getLastLightOff();
   }
 
+  getLightStatus() {
+    this.db.list('/').valueChanges().subscribe(lightStat => {
+      this.lightStatusString = lightStat;
+      if (this.lightStatusString[1] === 'ON'){
+        this.lightStatus = true;
+      } else if (this.lightStatusString[1] === 'OFF') {
+        this.lightStatus = false;
+      }
+    });
+  }
+
   toggleLight() {
-    if (!this.lightStatus) {
+    if (!this.light) {
       this.turnOnLight();
     } else {
       this.turnOffLight();
@@ -55,13 +66,13 @@ export class LightComponent implements OnInit {
 
   pushLastLightOn() {
     if (this.timeToWake !== this.tsLastlightOn) {
-    this.db.list('/timeLightON').push(this.timeToWake + ':00');
+    this.db.list('/timeLightON').push(this.timeToWake );
     }
   }
 
   pushLastLightOff() {
     if (this.timeToSleep !== this.tsLastlightOff) {
-    this.db.list('/timeLightOFF').push(this.timeToSleep + ':00');
+    this.db.list('/timeLightOFF').push(this.timeToSleep );
     }
   }
 
@@ -85,21 +96,15 @@ export class LightComponent implements OnInit {
 
   turnOnLight() {
     this.lightControl.turnOn();
-    this.lightbulb = true;
     this.lightStatus = true;
+    this.light = true;
   }
   turnOffLight() {
     this.lightControl.turnOff();
-    this.lightbulb = false;
     this.lightStatus = false;
+    this.light = false;
   }
 
-  wakeUp() {
-    this.timeControlLight.wakeUp(this.currentTime, this.timeToWake);
-  }
-  goToSleep() {
-    this.timeControlLight.goToSleep(this.currentTime, this.timeToSleep);
-  }
   gasAlert() {
     this.db.list('/MQ2/Gas').valueChanges().subscribe(intensity => {
       this.intensity = intensity;
@@ -123,5 +128,14 @@ export class LightComponent implements OnInit {
         });
 
       }
+
+/*
+  wakeUp() {
+    this.timeControlLight.wakeUp(this.currentTime, this.timeToWake);
+  }
+  goToSleep() {
+    this.timeControlLight.goToSleep(this.currentTime, this.timeToSleep);
+  }
+ */
 
 }

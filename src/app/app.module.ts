@@ -5,7 +5,6 @@ import {AngularFireModule} from 'angularfire2';
 import * as moment from 'moment';
 import {FormsModule} from '@angular/forms';
 import { NgxGaugeModule } from 'ngx-gauge';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,20 +13,20 @@ import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TempHumiComponent } from './tempHumi/tempHumi.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PlotComponent } from './plot/plot.component';
 import { HumidityComponent } from './humidity/humidity.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { LightComponent } from './light/light.component';
+import { InfoComponent } from './info/info.component';
 
 @NgModule({
    declarations: [
       AppComponent,
       NavbarComponent,
       TempHumiComponent,
-      PlotComponent,
       HumidityComponent,
       TemperatureComponent,
-      LightComponent
+      LightComponent,
+      InfoComponent
    ],
    imports: [
       BrowserModule,
@@ -36,8 +35,7 @@ import { LightComponent } from './light/light.component';
       AngularFireDatabaseModule,
       BrowserAnimationsModule,
       FormsModule,
-      NgxGaugeModule,
-      FlexLayoutModule
+      NgxGaugeModule
    ],
    providers: [],
    bootstrap: [

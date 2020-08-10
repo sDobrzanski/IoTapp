@@ -60,9 +60,9 @@ export class TemperatureComponent implements OnInit {
       datasets: [
         {
           data: valuesTemp,
-          backgroundColor: 'rgba(0,0,0,1)',
+          backgroundColor: 'rgb(172, 62, 85, 0.575)',
           borderColor: 'rgba(255, 31, 31, 1)',
-          fill: false
+          fill: true
         }
       ]
     },

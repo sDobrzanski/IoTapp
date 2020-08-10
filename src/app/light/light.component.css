@@ -93,3 +93,19 @@
 .big{
   font-size: 120px;  
 }
+
+.center{
+  align-items: center;
+  display: flex;
+    justify-content: center;
+  }
+
+  .margin{
+      margin-top: 25px;
+  }
+  .backgroundColor{
+      background-color: rgba(28, 81, 134, 0.788);
+  }
+  .white{
+    color: white;
+}
