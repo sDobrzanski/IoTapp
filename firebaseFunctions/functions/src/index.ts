@@ -29,8 +29,6 @@ export const formatData2 = functions.database.ref('/DHT22/Temperature/{pushId}/'
             });
         });
     
-
-        //?
 export const wakeUp = functions.pubsub.schedule('every 1 minutes').onRun(() => {
     // tslint:disable-next-line: no-floating-promises
     admin.database().ref('/timeLightON/').limitToLast(1).once('value')
