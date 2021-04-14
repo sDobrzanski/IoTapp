@@ -11,4 +11,14 @@ Hardware:
  - Relay
  - MB102
 
-Main screen with nav bar:
+Main screen - this is starting page of app, here you will be able to see alert if sensor will detect gas:
+![ScreenShot](mainScreen.png)
+
+Temperature screen - this is screen showing plot of temperature in time and also last measurement of temperature:
+![ScreenShot](tempScreen.png)
+
+Humidity screen - this is screen showing plot of humidity in time and also last measurement of humidity:
+![ScreenShot](humiScreen.png)
+
+Light control screen  - this is screen at which user is able to control light i.e. turn it on/off or set a time in future at which light will be turned on/off.
+![ScreenShot](lightScreen.png)
