@@ -11,7 +11,7 @@ Hardware:
  - Relay
  - MB102
 
-Main screen - this is starting page of app, here you will be able to see alert if sensor will detect gas:
+Main screen - this is starting page of app, here you will be able to see alert if sensor detects gas:
 ![ScreenShot](mainScreen.png)
 
 Temperature screen - this is screen showing plot of temperature in time and also last measurement of temperature:
